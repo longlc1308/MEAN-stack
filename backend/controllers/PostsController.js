@@ -4,11 +4,26 @@ const Post = require('./../models/posts.class');
 class PostsController {
 
     index(req, res, next) {
-        Post.find().then((document) => {
-            res.status(200).json({
-                posts: document
+        const pageSize = +req.query.pageSize;
+        const currentPage = +req.query.page;
+        const postQuery = Post.find();
+        let fetchedPosts;
+        if (pageSize && currentPage) {
+            postQuery
+                .skip(pageSize * (currentPage - 1))
+                .limit(pageSize)
+        }
+        postQuery
+            .then((document) => {
+                fetchedPosts = document;
+                return Post.countDocuments()
             })
-        });
+            .then(count => {
+                res.status(200).json({
+                    posts: fetchedPosts,
+                    maxPosts: count,
+                })
+            });
     }
 
     getPost(req, res, next) {
@@ -31,14 +46,21 @@ class PostsController {
     }
 
     add(req, res, next) {
+        const url = req.protocol + '://' + req.get("host");
         const post = new Post({
             title: req.body.title,
             content: req.body.content,
+            imagePath: url + "/images/" + req.file.filename
         })
         post.save().then((createdPost) => {
             res.status(201).json({
                 message: 'Success',
-                postId: createdPost._id
+                post: {
+                    id: createdPost._id,
+                    title: createdPost.title,
+                    content: createdPost.content,
+                    imagePath: createdPost.imagePath
+                }
             });
         });
     }

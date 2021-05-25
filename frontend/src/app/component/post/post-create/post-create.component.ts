@@ -38,11 +38,10 @@ export class PostCreateComponent implements OnInit {
   }
 
   addPost() {
-    const post = {
-      title: this.postForm.value.title,
-      content: this.postForm.value.content,
-    };
-    this.postService.addPost(this.postForm.value.title, this.postForm.value.content);
+    if(this.postForm.invalid){
+      return
+    }
+    this.postService.addPost(this.postForm.value.title, this.postForm.value.content,this.postForm.value.image);
   }
 
   onReset() {

@@ -3,6 +3,7 @@ import { Post } from './../../../models/post.class';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-edit',
@@ -13,6 +14,7 @@ export class PostEditComponent implements OnInit {
   public editForm: FormGroup;
   public postId: string;
   public post : Post;
+
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -43,7 +45,7 @@ export class PostEditComponent implements OnInit {
   }
 
   updatePost() {
-    this.postService.updatePost(this.postId,this.editForm.value.title, this.editForm.value.content )
+    this.postService.updatePost(this.postId,this.editForm.value.title, this.editForm.value.content);
   }
 
 
