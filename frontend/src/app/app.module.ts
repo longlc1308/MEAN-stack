@@ -30,6 +30,8 @@ import { PostListComponent } from './component/post/post-list/post-list.componen
 
 import { PostService } from './services/post.service';
 import { PostEditComponent } from './component/post/post-edit/post-edit.component';
+import { LogInComponent } from './component/auth/log-in/log-in.component';
+import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { PostEditComponent } from './component/post/post-edit/post-edit.componen
     PostCreateComponent,
     HeaderComponent,
     PostListComponent,
-    PostEditComponent
+    PostEditComponent,
+    LogInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

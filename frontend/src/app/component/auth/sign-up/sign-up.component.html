@@ -1,0 +1,16 @@
+<div class="mt-4">
+    <mat-card>
+        <form (ngSubmit)="onSignUp()" [formGroup]="signUpForm" autocomplete="false" novalidate="true">
+            <mat-form-field>
+                <input matInput type="email" placeholder="E-mail" name="email" class="form-control" formControlName="email">
+                <mat-error *ngIf="signUpForm.get('email').invalid">please enter a title!!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" name="password" class="form-control" formControlName="password">
+                <mat-error *ngIf="signUpForm.get('password').invalid">please enter a title!!</mat-error>
+            </mat-form-field>
+            <button mat-raised-button type="submit" class="btn btn-primary">Sign up</button> &nbsp;
+            <button mat-raised-button type="button" class="btn btn-danger" (click)="onReset()">Reset</button>
+        </form>
+    </mat-card>
+</div>
