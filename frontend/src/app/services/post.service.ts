@@ -35,7 +35,7 @@ export class PostService {
             id: post._id,
             imagePath: post.imagePath
           };
-        }), maxPosts :postData.maxPosts};
+        }), maxPosts : postData.maxPosts};
       }))
       .subscribe(TransformedPostsData => {
       this.posts = TransformedPostsData.posts;

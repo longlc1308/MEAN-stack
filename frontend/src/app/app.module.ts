@@ -15,7 +15,7 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 
 
 // httpClient
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // import router
 import { RouterModule } from '@angular/router';
@@ -29,9 +29,11 @@ import { HeaderComponent } from './component/layouts/header/header.component';
 import { PostListComponent } from './component/post/post-list/post-list.component';
 
 import { PostService } from './services/post.service';
+import { AuthService } from './services/auth.service';
 import { PostEditComponent } from './component/post/post-edit/post-edit.component';
 import { LogInComponent } from './component/auth/log-in/log-in.component';
 import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
+import { AuthInterceptor } from './component/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,7 @@ import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PostService],
+  providers: [PostService,AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi : true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

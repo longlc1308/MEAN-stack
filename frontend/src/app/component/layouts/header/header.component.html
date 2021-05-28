@@ -17,10 +17,10 @@
           Dropdown
         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" [routerLink]="['/create']">Add post</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" [routerLink]="['/login']">Login</a>
-                            <a class="dropdown-item" [routerLink]="['/signUp']">Sign Up</a>
+                            <a class="dropdown-item" [routerLink]="['/create']" *ngIf="isUserAuthenticated">Add post</a>
+                            <a class="dropdown-item" [routerLink]="['/login']" *ngIf="!isUserAuthenticated">Login</a>
+                            <a class="dropdown-item" [routerLink]="['/signUp']" *ngIf="!isUserAuthenticated">Sign Up</a>
+                            <button class="dropdown-item" *ngIf="isUserAuthenticated" (click)="onLogout()">Logout</button>
                         </div>
                     </li>
                 </ul>

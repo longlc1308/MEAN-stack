@@ -6,6 +6,8 @@ const multer = require('multer');
 
 const router = express.Router();
 const postsController = require('../../controllers/PostsController');
+const checkAuth = require('../../middlewares/check-auth');
+
 
 const MIME_TYPE_MAP = {
     'image/png': 'png',
@@ -36,7 +38,7 @@ router.delete('/:id', postsController.deletePost);
 router.get('/edit/:id', postsController.getPost);
 
 
-router.post('/', multer({ storage: storage }).single("image"), postsController.add);
+router.post('/', checkAuth, multer({ storage: storage }).single("image"), postsController.add);
 router.put('/:id', postsController.edit);
 
 
