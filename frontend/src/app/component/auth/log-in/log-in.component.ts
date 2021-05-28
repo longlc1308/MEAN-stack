@@ -1,6 +1,7 @@
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class LogInComponent implements OnInit {
 
   public loginForm: FormGroup;
   constructor(
-    private _formBuilder: FormBuilder,
+    public authService: AuthService,
+    private _formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -23,7 +25,10 @@ export class LogInComponent implements OnInit {
   }
 
   onLogin(){
-
+    if(this.loginForm.invalid){
+      return
+    }
+    this.authService.logIn(this.loginForm.value.email, this.loginForm.value.password)
   }
   onReset() {
     this.loginForm.reset();

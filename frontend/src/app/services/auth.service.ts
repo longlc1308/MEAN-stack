@@ -28,4 +28,12 @@ export class AuthService {
       console.log(result)
     })
   }
+
+  logIn(email: string, password: string){
+    const User : User = {email: email, password: password}
+    this.httpClient.post(this.API_User + '/login', User)
+    .subscribe(result =>{
+      console.log(result)
+    })
+  }
 }
