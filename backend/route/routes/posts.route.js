@@ -34,12 +34,12 @@ const storage = multer.diskStorage({
 });
 
 
-router.delete('/:id', postsController.deletePost);
+router.delete('/:id', checkAuth, postsController.deletePost);
 router.get('/edit/:id', postsController.getPost);
 
 
 router.post('/', checkAuth, multer({ storage: storage }).single("image"), postsController.add);
-router.put('/:id', postsController.edit);
+router.put('/:id', checkAuth, postsController.edit);
 
 
 

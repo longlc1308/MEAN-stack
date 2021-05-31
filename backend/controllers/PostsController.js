@@ -37,11 +37,15 @@ class PostsController {
             _id: req.body.id,
             title: req.body.title,
             content: req.body.content,
+            creator: req.userData.userId
         })
-        Post.updateOne({ _id: req.params.id }, post)
+        Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
             .then(result => {
-                console.log(result)
-                res.status(200).json({ message: "updated successfully" })
+                if (result.nModified > 0) {
+                    res.status(200).json({ message: "updated successfully" })
+                } else {
+                    res.status(401).json({ message: "updated failed" })
+                }
             })
     }
 
@@ -50,7 +54,8 @@ class PostsController {
         const post = new Post({
             title: req.body.title,
             content: req.body.content,
-            imagePath: url + "/images/" + req.file.filename
+            imagePath: url + "/images/" + req.file.filename,
+            creator: req.userData.userId
         })
         post.save().then((createdPost) => {
             res.status(201).json({
@@ -66,9 +71,13 @@ class PostsController {
     }
 
     deletePost(req, res, next) {
-        Post.deleteOne({ _id: req.params.id })
-            .then(() => {
-                res.status(200).json({ message: "Post deleted" });
+        Post.deleteOne({ _id: req.params.id, creator: req.userData.userId })
+            .then((result) => {
+                if (result.n > 0) {
+                    res.status(200).json({ message: "Post deleted" });
+                } else {
+                    res.status(401).json({ message: "Delete failed" })
+                }
             })
     }
 

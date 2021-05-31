@@ -5,6 +5,7 @@ import { PostCreateComponent } from './component/post/post-create/post-create.co
 import { PostEditComponent } from './component/post/post-edit/post-edit.component';
 import { LogInComponent } from './component/auth/log-in/log-in.component';
 import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -13,9 +14,10 @@ import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
 
 export const appRoutes: Routes = [
   { path: '', component: PostListComponent },
-  { path: 'create', component: PostCreateComponent },
-  { path: 'edit/:postId', component: PostEditComponent },
+  { path: 'create', component: PostCreateComponent, canActivate : [AuthGuard] },
+  { path: 'edit/:postId', component: PostEditComponent, canActivate : [AuthGuard] },
   { path: 'signUp', component: SignUpComponent },
   { path: 'login', component: LogInComponent },
 
 ]
+

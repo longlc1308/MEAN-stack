@@ -33,7 +33,8 @@ export class PostService {
             title: post.title,
             content: post.content,
             id: post._id,
-            imagePath: post.imagePath
+            imagePath: post.imagePath,
+            creator: post.creator
           };
         }), maxPosts : postData.maxPosts};
       }))
@@ -65,7 +66,7 @@ export class PostService {
 
 
   updatePost(id: string, title: string, content: string) {
-    const post: Post = { id: id, title: title, content: content, imagePath: null };
+    const post: Post = { id: id, title: title, content: content, imagePath: null, creator: null };
     this.httpClient.put(this.API_URL + '/' + id, post)
       .subscribe(data => {
         this.router.navigate(['/']);

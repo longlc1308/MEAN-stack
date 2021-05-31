@@ -35,6 +35,8 @@ import { LogInComponent } from './component/auth/log-in/log-in.component';
 import { SignUpComponent } from './component/auth/sign-up/sign-up.component';
 import { AuthInterceptor } from './component/auth/auth-interceptor';
 
+import { AuthGuard  } from './guards/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,7 @@ import { AuthInterceptor } from './component/auth/auth-interceptor';
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PostService,AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi : true }],
+  providers: [PostService,AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi : true }, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
