@@ -3,19 +3,13 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const cors = require('cors');
-const Post = require('./models/posts.class');
-const route = require('./route/index')
+const route = require('./route/index');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-
-
-
-app.use("/images", express.static(path.join("images")));
-
-
+app.use('/images', express.static(path.join('images')));
 
 const db = require('./config/posts');
 db.connect();
@@ -24,5 +18,5 @@ db.connect();
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+    console.log(`Example app listening at http://localhost:${port}`);
+});

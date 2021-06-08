@@ -1,53 +1,53 @@
 {
-    "name": "backend",
-    "version": "1.0.0",
-    "description": "",
-    "main": "app.js",
-    "scripts": {
-        "beautiful": "prettier --single-quote --trailing-comma all --write **/*.{js,json} ",
-        "start": "nodemon --inspect app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/longlc1308/MEAN-stack.git"
-    },
-    "keywords": [
-        "MEAN",
-        "stack",
-        "MongoDB",
-        "ExpressJs",
-        "Angular",
-        "NodeJS"
-    ],
-    "author": "longlc",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/longlc1308/MEAN-stack/issues"
-    },
-    "homepage": "https://github.com/longlc1308/MEAN-stack#readme",
-    "lint-staged": {
-        "**/*.{js,json}": "prettier --single-quote --trailing-comma all --write"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "dependencies": {
-        "bcrypt": "^5.0.1",
-        "body-parser": "^1.19.0",
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "jsonwebtoken": "^8.5.1",
-        "mongoose": "^5.12.9",
-        "mongoose-unique-validator": "^2.0.3",
-        "multer": "^1.4.2",
-        "nodemon": "^2.0.7"
-    },
-    "devDependencies": {
-        "husky": "^6.0.0",
-        "lint-staged": "^11.0.0",
-        "prettier": "^2.3.0"
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "beautiful": "prettier --single-quote --trailing-comma all --write **/*.{js,json} ",
+    "start": "nodemon --inspect app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longlc1308/MEAN-stack.git"
+  },
+  "keywords": [
+    "MEAN",
+    "stack",
+    "MongoDB",
+    "ExpressJs",
+    "Angular",
+    "NodeJS"
+  ],
+  "author": "longlc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/longlc1308/MEAN-stack/issues"
+  },
+  "homepage": "https://github.com/longlc1308/MEAN-stack#readme",
+  "lint-staged": {
+    "**/*.{js,json}": "prettier --single-quote --trailing-comma all --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.9",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0"
+  }
 }
